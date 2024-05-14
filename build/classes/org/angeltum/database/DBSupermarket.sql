@@ -25,6 +25,7 @@ create table Proveedores(
     razonSocial varchar (60),
     contactoPrincipal varchar (100),
     paginaWeb varchar(50),
+    
     primary key PK_CodigoProveedor(codigoProveedor)
 );
 
@@ -33,12 +34,14 @@ create table Compras(
     fechaDocumento date,
 	descripcion varchar(60),
     totalDocumento decimal(10,2),
+    
     primary key PK_NumeroDocumento(numeroDocumento)
 );
 
 create table TipoProducto(
 	codigoTipoProducto int,
     descripcion varchar(45),
+    
     primary key PK_CodigoTipoProducto(codigoTipoProducto)
 );
 
@@ -46,11 +49,72 @@ create table CargoDeEmpleado(
 	codigoCargoEmpleado int,
     nombreCargo varchar(50),
     descripcionCargo varchar (45),
+    
 	primary key PK_CodigoCargoEmpleado(codigoCargoEmpleado)
 );
 
 delimiter $$
 
+create table Empleados(
+	CodigoEmpleado int,
+    nombreEmpleado varchar(50),
+    apellidoEmpleado varchar(50),
+    sueldo decimal (10,2),
+    direccion varchar (150),
+    turno varchar(15),
+    codigoCargoEmpleado int,
+    
+    primary key PK_CodigoEmpleado(codigoEmpleado),
+    
+    constraint fk_CargoEmpleado_codigoCargoEmpleado foreign key (codigoCargoEmpleado)
+            references CargoEmpleado (codigoCargoEmpleado)
+ );
+ 
+ create table EmailProveedor(
+	codigoEmailProveedor int,
+    emailProveedor varchar(50),
+    descripcion varchar(100),
+    codigoProveedor int,
+    
+    primary key PK_CodigoEmailProveedor(codigoEmailProveedor),
+ 
+	constraint fk_Proveedores_codigoProveedor foreign key (codigoProveedor)
+	references Proveedores (codigoProveedor)
+ ); 
+ 
+ create table TelefonoProveedor(
+	codigoTelefonoProveedor int,
+    numeroPrincipal varchar(8),
+    observaciones varchar(45),
+    codigoProveedor int,
+    
+    primary key PK_CodigoTelefonoProveedor(codigoTelefonoProveedor),
+    
+    constraint fk_proveedores_codigoProveedores foreign key (codigoProveedor)
+    references proveedores(codigoProveedor)
+ );
+ 
+ create table Productos
+(
+    codigoProducto varchar(15),
+    descripcionProducto varchar (45),
+    precioUnitario decimal (10,2),
+    precioDocena decimal (10,2),
+    precioMayor decimal (10,2),
+    imagenproducto varchar (45),
+    existencia int,
+	codigoTipoProducto int,
+	codigoProveedor int,
+        
+        primary key PK_CodigoProducto(codigoProducto),
+ 
+        constraint fk_Productos_TipoProductos foreign key (codigoTipoProducto)
+        references TipoProductos (codigoTipoProducto),
+ 
+        constraint fk_proveedores_Proveedores foreign key (codigoProveedor)
+        references Proveedores (codigoProveedor)
+ 
+);
 create procedure sp_ListarClientes ()
 begin 
 	select

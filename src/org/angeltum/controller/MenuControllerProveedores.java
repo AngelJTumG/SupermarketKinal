@@ -86,6 +86,9 @@ public class MenuControllerProveedores implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
     }
 
+    
+    
+    
      public void MenuPrincipalView() {
         escenarioPrincipal.menuPrincipalView();
     }
