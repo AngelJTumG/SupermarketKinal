@@ -16,10 +16,9 @@ public class MenuPrincipalController implements Initializable {
     @FXML MenuItem btnMenuClientes;
     @FXML MenuItem btnProgramador;
     @FXML MenuItem btnProveedores;
-
+    @FXML MenuItem btnMenuCompras;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
     }
 
     public Main getEscenarioPrincipal() {
@@ -54,6 +53,15 @@ public class MenuPrincipalController implements Initializable {
     public void setBtnProveedores(MenuItem btnProveedores){
         this.btnProveedores = btnProveedores;
     }
+    
+    public MenuItem getBtnMenuCompras(){
+        return btnMenuCompras;
+    }
+    
+   public void setBtnMenuCompras(MenuItem btnMenuCompras){
+       this.btnMenuCompras = btnMenuCompras;
+   }
+    
     @FXML 
         public void handleButtonAction(ActionEvent event){
         if (event.getSource() == btnMenuClientes){
@@ -62,5 +70,8 @@ public class MenuPrincipalController implements Initializable {
             escenarioPrincipal.programadorView();
         if (event.getSource() == btnProveedores){
             escenarioPrincipal.menuProveedoresView();}
+        if (event.getSource() == btnMenuCompras) {
+            escenarioPrincipal.menuCompraVentaView(); 
         }            
+}
 }

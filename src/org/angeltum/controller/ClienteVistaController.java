@@ -98,18 +98,17 @@ public class ClienteVistaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarDatos();
-
     }
 
     public void cargarDatos() {
         tblCliente.setItems(getClientes());
         colClienteID.setCellValueFactory(new PropertyValueFactory<Clientes, Integer>("clienteID"));
-        colNombreClientes.setCellValueFactory(new PropertyValueFactory<Clientes, Integer>("nombreClientes"));
-        colApellidosClientes.setCellValueFactory(new PropertyValueFactory<Clientes, Integer>("apellidosClientes"));
-        colDireccionClientes.setCellValueFactory(new PropertyValueFactory<Clientes, Integer>("direccionClientes"));
-        colNit.setCellValueFactory(new PropertyValueFactory<Clientes, Integer>("NIT"));
-        colTelefonoClientes.setCellValueFactory(new PropertyValueFactory<Clientes, Integer>("telefonoClientes"));
-        colCorreoClientes.setCellValueFactory(new PropertyValueFactory<Clientes, Integer>("correoClientes"));
+        colNombreClientes.setCellValueFactory(new PropertyValueFactory<Clientes, String>("nombreClientes"));
+        colApellidosClientes.setCellValueFactory(new PropertyValueFactory<Clientes, String>("apellidosClientes"));
+        colDireccionClientes.setCellValueFactory(new PropertyValueFactory<Clientes, String>("direccionClientes"));
+        colNit.setCellValueFactory(new PropertyValueFactory<Clientes, String>("NIT"));
+        colTelefonoClientes.setCellValueFactory(new PropertyValueFactory<Clientes, String>("telefonoClientes"));
+        colCorreoClientes.setCellValueFactory(new PropertyValueFactory<Clientes, String>("correoClientes"));
 
     }
 
@@ -126,7 +125,7 @@ public class ClienteVistaController implements Initializable {
     public ObservableList<Clientes> getClientes() {
         ArrayList<Clientes> lista = new ArrayList<>();
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarClientes()}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarClientes ()}");
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
                 lista.add(new Clientes(resultado.getInt("clienteID"),

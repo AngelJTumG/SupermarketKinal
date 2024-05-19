@@ -14,7 +14,8 @@ public class Conexion {
     public Conexion(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBSupermarket?useSSL=false","root","abc123**");
+            String url = "jdbc:mysql://localhost:3306/DBSupermarket?useSSL=false&allowPublicKeyRetrieval=true";
+            conexion = DriverManager.getConnection(url,"root","abc123**");
         }catch (ClassNotFoundException e){
             e.printStackTrace();
         }catch(InstantiationException e){

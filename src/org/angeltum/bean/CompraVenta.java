@@ -1,0 +1,66 @@
+
+package org.angeltum.bean;
+
+import java.math.BigDecimal;
+import java.sql.Date;
+
+/**
+ *
+ * @author Angel
+ */
+
+public class CompraVenta {
+
+    private int numeroDocumento;
+    private Date fechaDocumento;
+    private String descripcion;
+    private BigDecimal totalDocumento;
+
+    public CompraVenta() {
+
+    }
+
+    public CompraVenta(int numeroDocumento, Date fechaDocumento, String descripcion, BigDecimal totalDocumento) {
+        this.numeroDocumento = numeroDocumento;
+        this.fechaDocumento = fechaDocumento;
+        this.descripcion = descripcion;
+        this.totalDocumento = totalDocumento;
+    }
+
+    public int getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(int numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public Date getFechaDocumento() {
+        return fechaDocumento;
+    }
+
+    public void setFechaDocumento(Date fechaDocumento) {
+        this.fechaDocumento = fechaDocumento;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public BigDecimal getTotalDocumento() {
+        return totalDocumento;
+    }
+
+    public void setTotalDocumento(BigDecimal totalDocumento) {
+        this.totalDocumento = totalDocumento;
+    }
+    
+    @Override
+    public String toString() {
+        return getNumeroDocumento() + "  ";
+    }
+}

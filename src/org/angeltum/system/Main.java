@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import org.angeltum.controller.ClienteVistaController;
 import org.angeltum.controller.MenuPrincipalController;
 import org.angeltum.controller.AboutMeController;
+import org.angeltum.controller.MenuControllerCompraVenta;
 import org.angeltum.controller.MenuControllerProveedores;
 
 /**
@@ -85,6 +86,17 @@ public class Main extends Application {
             MenuControllerProveedores menuProveedoresView = (MenuControllerProveedores) cambiarEscena
         ("ProveedoresView.fxml", 1070, 600);
             menuProveedoresView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    public void menuCompraVentaView() {
+        try {
+            MenuControllerCompraVenta menuCompraVentaView = (MenuControllerCompraVenta) cambiarEscena
+        ("CompraYVentaView.fxml", 1070, 600);
+            menuCompraVentaView.setEscenarioPrincipal(this);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
