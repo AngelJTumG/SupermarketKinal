@@ -33,8 +33,8 @@
           <Menu mnemonicParsing="false" text="Reporte">
             <items>
               <MenuItem fx:id="btnMenuCompras" mnemonicParsing="false" onAction="#handleButtonAction" text="Compra y venta de productos" />
-                  <MenuItem mnemonicParsing="false" text="Tipo Producto" />
-                  <MenuItem mnemonicParsing="false" text="Cargo Empleado " />
+                  <MenuItem fx:id="btnMenuTipo" mnemonicParsing="false" onAction="#handleButtonAction" text="Tipo Producto" />
+                  <MenuItem fx:id="btnCargoEmpleado" mnemonicParsing="false" onAction="#handleButtonAction" text="Cargo Empleado " />
             </items>
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
