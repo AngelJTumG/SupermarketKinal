@@ -18,7 +18,7 @@
    <children>
       <ImageView fitHeight="636.0" fitWidth="1164.0" layoutX="-13.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Documentos/NetBeansProjects/SupermarketKinal/src/org/angeltum/imagenes/Proveedores%20(1).png" />
+            <Image url="@../imagenes/Proveedores%20(1).png" />
          </image>
       </ImageView>
       <TableView fx:id="tblProductos" layoutX="111.0" layoutY="191.0" prefHeight="439.0" prefWidth="883.0">
@@ -77,11 +77,11 @@
             <ComboBox fx:id="cmbCodigoTipoProducto" prefHeight="25.0" prefWidth="138.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <Button fx:id="btnAgregarProducto" alignment="CENTER_RIGHT" layoutX="1000.0" layoutY="255.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Agregar">
+      <Button fx:id="btnAgregarProducto" alignment="CENTER_RIGHT" layoutX="1000.0" layoutY="255.0" mnemonicParsing="false" onAction="#agregar" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Agregar">
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../Documentos/NetBeansProjects/SupermarketKinal/src/org/angeltum/imagenes/business_application_addmale_useradd_insert_add_user_client_2312.png" />
+                  <Image url="@../imagenes/business_application_addmale_useradd_insert_add_user_client_2312.png" />
                </image>
             </ImageView>
          </graphic>
@@ -89,11 +89,11 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button fx:id="btnEditarProducto" layoutX="1000.0" layoutY="337.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Editar">
+      <Button fx:id="btnEditarProducto" layoutX="1000.0" layoutY="337.0" mnemonicParsing="false" onAction="#editar" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Editar">
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../Documentos/NetBeansProjects/SupermarketKinal/src/org/angeltum/imagenes/businessapplication_edit_male_user_thepencil_theclient_negocio_2321.png" />
+                  <Image url="@../imagenes/businessapplication_edit_male_user_thepencil_theclient_negocio_2321.png" />
                </image>
             </ImageView>
          </graphic>
@@ -101,11 +101,11 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button fx:id="btnEliminarProducto" alignment="CENTER_RIGHT" layoutX="1000.0" layoutY="422.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="100.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Eliminar" textOverrun="LEADING_WORD_ELLIPSIS">
+      <Button fx:id="btnEliminarProducto" alignment="CENTER_RIGHT" layoutX="1000.0" layoutY="422.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="65.0" prefWidth="100.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Eliminar" textOverrun="LEADING_WORD_ELLIPSIS">
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../Documentos/NetBeansProjects/SupermarketKinal/src/org/angeltum/imagenes/delete_delete_deleteusers_delete_male_user_maleclient_2348.png" />
+                  <Image url="@../imagenes/delete_delete_deleteusers_delete_male_user_maleclient_2348.png" />
                </image>
             </ImageView>
          </graphic>
@@ -113,11 +113,11 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button fx:id="btnReportesProducto" alignment="CENTER_RIGHT" layoutX="996.0" layoutY="501.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="108.0" style="-fx-background-color: BF4F45;" text="Reportes">
+      <Button fx:id="btnReportesProducto" alignment="CENTER_RIGHT" layoutX="996.0" layoutY="501.0" mnemonicParsing="false" onAction="#reportes" prefHeight="65.0" prefWidth="108.0" style="-fx-background-color: BF4F45;" text="Reportes">
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../Documentos/NetBeansProjects/SupermarketKinal/src/org/angeltum/imagenes/fileinterfacesymboloftextpapersheet_79740.png" />
+                  <Image url="@../imagenes/fileinterfacesymboloftextpapersheet_79740.png" />
                </image>
             </ImageView>
          </graphic>
@@ -129,7 +129,7 @@
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../Documentos/NetBeansProjects/SupermarketKinal/src/org/angeltum/imagenes/3643769-building-home-house-main-menu-start_113416.png" />
+                  <Image url="@../imagenes/3643769-building-home-house-main-menu-start_113416.png" />
                </image>
             </ImageView>
          </graphic>

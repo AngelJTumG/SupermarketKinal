@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1090.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.angeltum.controller.MenuControllerEmpleado">
+   <children>
+      <ImageView fitHeight="636.0" fitWidth="1164.0" layoutX="-13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/Proveedores%20(4).png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnAgregarEmpleado" alignment="CENTER_RIGHT" layoutX="956.0" layoutY="243.0" mnemonicParsing="false" onAction="#agregar" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Agregar">
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/business_application_addmale_useradd_insert_add_user_client_2312.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button fx:id="btnEditarEmpleado" layoutX="956.0" layoutY="335.0" mnemonicParsing="false" onAction="#editar" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Editar">
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/businessapplication_edit_male_user_thepencil_theclient_negocio_2321.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button fx:id="btnEliminarEmpleado" alignment="CENTER_RIGHT" layoutX="958.0" layoutY="423.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="65.0" prefWidth="100.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Eliminar" textOverrun="LEADING_WORD_ELLIPSIS">
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/delete_delete_deleteusers_delete_male_user_maleclient_2348.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button fx:id="btnReportesEmpleados" alignment="CENTER_RIGHT" layoutX="954.0" layoutY="511.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="108.0" style="-fx-background-color: BF4F45;" text="Reportes">
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/fileinterfacesymboloftextpapersheet_79740.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <Button fx:id="btnRegresar" alignment="CENTER_RIGHT" layoutX="8.0" layoutY="511.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="93.0" style="-fx-background-color: BF4F45;" text="Home">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/3643769-building-home-house-main-menu-start_113416.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+      <TableView fx:id="tblEmpleados" layoutX="151.0" layoutY="297.0" prefHeight="316.0" prefWidth="768.0">
+         <columns>
+            <TableColumn fx:id="colCodigoEmpleado" prefWidth="128.0" text="codigoEmpleado" />
+            <TableColumn fx:id="colNombresEmpleado" prefWidth="128.0" text="nombresEmpleado" />
+            <TableColumn fx:id="colApellidosEmpleado" prefWidth="135.0" text="apellidosEmpleado" />
+            <TableColumn fx:id="colSueldo" prefWidth="83.0" text="Sueldo" />
+            <TableColumn fx:id="colDireccion" text="direccion" />
+            <TableColumn fx:id="colTurno" prefWidth="58.0" text="turno" />
+            <TableColumn fx:id="colCargoEmpleadoCodigo" prefWidth="155.0" text="codigoCargoEmpleado" />
+         </columns>
+      </TableView>
+      <GridPane layoutX="195.0" layoutY="105.0" prefHeight="171.0" prefWidth="292.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo Empleado" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Empleado" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido Empleado" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sueldo" GridPane.rowIndex="3" />
+            <TextField fx:id="txtCodigoEmpleado" GridPane.columnIndex="1" />
+            <TextField fx:id="txtNombresEmpleado" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtApellidosEmpleado" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtSueldo" prefWidth="202.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <GridPane layoutX="559.0" layoutY="125.0" prefHeight="131.0" prefWidth="271.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sueldo" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo de Empleado" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cmbCodigoCargoEmpleado" prefHeight="31.0" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtDireccion" GridPane.columnIndex="1" />
+            <TextField fx:id="txtTurno" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

@@ -15,6 +15,8 @@ import org.angeltum.controller.MenuPrincipalController;
 import org.angeltum.controller.AboutMeController;
 import org.angeltum.controller.MenuCargoEmpleadoController;
 import org.angeltum.controller.MenuControllerCompraVenta;
+import org.angeltum.controller.MenuControllerEmpleado;
+import org.angeltum.controller.MenuControllerProducto;
 import org.angeltum.controller.MenuControllerProveedores;
 import org.angeltum.controller.MenuControllerTipoProducto;
 
@@ -30,6 +32,7 @@ public class Main extends Application {
     public void start(Stage escenarioPrincipal) throws Exception {
         this.escenarioPrincipal = escenarioPrincipal;
         this.escenarioPrincipal.setTitle("KinalSupermarket");
+        escenarioPrincipal.getIcons().add(new Image("/org/angeltum/imagenes/logo.jpg"));
         menuPrincipalView();
         escenarioPrincipal.show();   
     }
@@ -121,6 +124,28 @@ public class Main extends Application {
             MenuCargoEmpleadoController menuCargoEmpleadoView = (MenuCargoEmpleadoController) cambiarEscena
         ("CargoEmpleadoView.fxml", 1070, 600);
             menuCargoEmpleadoView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    public void menuProductoView() {
+        try {
+            MenuControllerProducto menuProductoView = (MenuControllerProducto) cambiarEscena
+        ("ProductosView.fxml", 1120, 600);
+            menuProductoView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    public void menuEmpleadoView() {
+        try {
+            MenuControllerEmpleado menuEmpleadoView = (MenuControllerEmpleado) cambiarEscena
+        ("EmpleadosView.fxml", 1120, 600);
+            menuEmpleadoView.setEscenarioPrincipal(this);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
