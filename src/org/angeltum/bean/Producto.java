@@ -30,6 +30,12 @@ public class Producto {
         this.codigoProveedor = codigoProveedor;
     }
 
+    public Producto(String string, String string0, double aDouble, double aDouble0, double aDouble1, String string1, int aInt, int aInt0, int aInt1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+        
+
     public String getCodigoProducto() {
         return codigoProducto;
     }
@@ -94,4 +100,8 @@ public class Producto {
         this.codigoProveedor = codigoProveedor;
     }
 
+    @Override
+    public String toString() {
+        return "| " + getCodigoProducto() + " | " + getPrecioUnitario() + " | " + " | " + getExistencia() + "|";
+    }
 }

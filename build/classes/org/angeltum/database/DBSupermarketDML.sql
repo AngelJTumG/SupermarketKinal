@@ -1000,3 +1000,80 @@ CALL sp_AgregarDetalleCompra(
 );
 
 -- -----------------------------------------------------------------------------------------------------------------------------------------------------
+-- trigger
+
+delimiter $$
+
+create trigger tr_PrecioProductos_After_Insert
+after insert on DetalleCompra
+for each row 
+begin
+	declare total decimal(10,2);
+    declare cantidad int;
+    
+    set total = NEW.costoUnitario * NEW.cantidad;
+
+	update Productos
+	set precioUnitario = total * 0.40,
+		precioDocena  = total * 0.35 * 12,
+        precioMayor = total * 0.25
+    where Productos.codigoProducto = NEW.codigoProducto;
+    
+	update Productos
+    set Productos.existencia = Productos.existencia - NEW.cantidad
+	where Productos.codigoProducto = NEW.codigoProducto;
+
+end $$
+delimiter ;
+
+delimiter $$
+
+create trigger tr_TotalDocumento_After_Insert
+after insert on DetalleCompra
+for each row
+begin
+    declare total decimal(10,2);
+    
+    select sum(costoUnitario * cantidad) into total from DetalleCompra 
+    where numeroDocumento = NEW.numeroDocumento;
+    
+    update Compras 
+		set totalDocumento = total 
+	where numeroDocumento = NEW.numeroDocumento;
+end $$
+delimiter ;
+
+delimiter $$
+
+create trigger tr_PrecioUnitario_After_Upd
+after update on DetalleCompra
+for each row
+begin
+
+	declare precioP decimal(10,2);
+    
+    set precioP = (select precioUnitario from Productos where codigoProducto = NEW.codigoProducto);
+    
+    update DetalleFactura
+    set DetalleFactura.precioUnitario = precioP
+    where DetalleFactura.codigoProducto = NEW.codigoProducto;
+end $$
+delimiter ;
+
+
+delimiter $$
+
+create trigger tr_TotalFactura_Aftr_U
+after update on DetalleFactura
+for each row
+begin
+	declare totalFactura decimal(10,2);
+    
+    select sum(precioUnitario * cantidad) into totalFactura from DetalleFactura
+    where numeroFactura = NEW.numeroFactura;
+    
+    update Factura
+		set Factura.totalFactura = totalFactura
+	where Factura.numeroFactura = NEW.numeroFactura;
+end $$
+delimiter ;

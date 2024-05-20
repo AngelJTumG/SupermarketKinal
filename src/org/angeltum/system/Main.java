@@ -18,7 +18,10 @@ import org.angeltum.controller.MenuControllerCompraVenta;
 import org.angeltum.controller.MenuControllerEmpleado;
 import org.angeltum.controller.MenuControllerProducto;
 import org.angeltum.controller.MenuControllerProveedores;
+import org.angeltum.controller.MenuControllerTelefonoProveedor;
 import org.angeltum.controller.MenuControllerTipoProducto;
+import org.angeltum.controller.MenuDetalleCompra;
+import org.angeltum.controller.MenuDetalleFacturaController;
 
 /**
  *
@@ -152,7 +155,41 @@ public class Main extends Application {
         }
     }
     
+    public void menuTelefonoProveedorView() {
+        try {
+            MenuControllerTelefonoProveedor menuTelefonoProveedorView = (MenuControllerTelefonoProveedor) cambiarEscena
+        ("TelefonoProveedorView.fxml", 1120, 600);
+            menuTelefonoProveedorView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public void menuDetalleFacturaView() {
+    try {
+            MenuDetalleFacturaController menuDetalleFacturaView = (MenuDetalleFacturaController) cambiarEscena
+        ("DetalleFacturaView.fxml", 1120, 600);
+            menuDetalleFacturaView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void menuDetalleCompraView() {
+    try {
+            MenuDetalleCompra menuDetalleCompraView = (MenuDetalleCompra) cambiarEscena
+        ("DetalleCompraView.fxml", 1120, 600);
+            menuDetalleCompraView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }    
     }
 }

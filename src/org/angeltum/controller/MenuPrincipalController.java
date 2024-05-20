@@ -21,6 +21,9 @@ public class MenuPrincipalController implements Initializable {
     @FXML MenuItem btnCargoEmpleado;
     @FXML MenuItem btnProducto;
     @FXML MenuItem btnEmpleados;
+    @FXML MenuItem btnTelefonoProveedor;
+    @FXML MenuItem btnDetalleFactura;
+    @FXML MenuItem btnDetalleCompra;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -99,6 +102,30 @@ public class MenuPrincipalController implements Initializable {
        this.btnEmpleados = btnEmpleados;
    }
    
+   public MenuItem getBtnTelefonoProveedor(){
+        return btnTelefonoProveedor;
+    }
+    
+   public void setBtnTelefonoProveedor(MenuItem btnTelefonoProveedor){
+       this.btnTelefonoProveedor = btnTelefonoProveedor;
+   }
+   
+   public MenuItem getBtnDetalleFactura(){
+        return btnDetalleFactura;
+    }
+    
+   public void setBtnDetalleFactura(MenuItem btnDetalleFactura){
+       this.btnDetalleFactura = btnDetalleFactura;
+   }
+   
+   public MenuItem getBtnDetalleCompra(){
+        return btnDetalleCompra;
+    }
+    
+   public void setBtnDetalleCompra(MenuItem btnDetalleCompra){
+       this.btnDetalleCompra = btnDetalleCompra;
+   }
+   
     @FXML 
         public void handleButtonAction(ActionEvent event){
         if (event.getSource() == btnMenuClientes){
@@ -117,6 +144,12 @@ public class MenuPrincipalController implements Initializable {
             escenarioPrincipal.menuProductoView();
         }if (event.getSource() == btnEmpleados){
             escenarioPrincipal.menuEmpleadoView();
+        }if (event.getSource() == btnTelefonoProveedor){
+            escenarioPrincipal.menuTelefonoProveedorView();
+        }if (event.getSource() == btnDetalleFactura){
+            escenarioPrincipal.menuDetalleFacturaView();
+        }if (event.getSource() == btnDetalleCompra){
+            escenarioPrincipal.menuDetalleCompraView();
         }            
 }
 }
