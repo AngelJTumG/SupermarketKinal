@@ -19,8 +19,9 @@
           <Menu mnemonicParsing="false" text="Modulos">
             <items>
                   <MenuItem fx:id="btnMenuClientes" mnemonicParsing="false" onAction="#handleButtonAction" text="Clientes" />
-                  <MenuItem fx:id="btnMenuClientes1" mnemonicParsing="false" onAction="#handleButtonAction" text="Productos" />
+                  <MenuItem fx:id="btnProducto" mnemonicParsing="false" onAction="#handleButtonAction" text="Productos" />
                   <MenuItem fx:id="btnProveedores" mnemonicParsing="false" onAction="#handleButtonAction" text="Proveedores" />
+                  <MenuItem fx:id="btnEmpleados" mnemonicParsing="false" onAction="#handleButtonAction" text="Empleados" />
             </items>
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
