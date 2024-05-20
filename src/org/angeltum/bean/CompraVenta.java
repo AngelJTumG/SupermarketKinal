@@ -1,9 +1,5 @@
 
 package org.angeltum.bean;
-
-import java.math.BigDecimal;
-import java.sql.Date;
-
 /**
  *
  * @author Angel
@@ -12,15 +8,15 @@ import java.sql.Date;
 public class CompraVenta {
 
     private int numeroDocumento;
-    private Date fechaDocumento;
+    private String fechaDocumento;
     private String descripcion;
-    private BigDecimal totalDocumento;
+    private Double totalDocumento;
 
     public CompraVenta() {
 
     }
 
-    public CompraVenta(int numeroDocumento, Date fechaDocumento, String descripcion, BigDecimal totalDocumento) {
+    public CompraVenta(int numeroDocumento, String fechaDocumento, String descripcion, Double totalDocumento) {
         this.numeroDocumento = numeroDocumento;
         this.fechaDocumento = fechaDocumento;
         this.descripcion = descripcion;
@@ -35,11 +31,11 @@ public class CompraVenta {
         this.numeroDocumento = numeroDocumento;
     }
 
-    public Date getFechaDocumento() {
+    public String getFechaDocumento() {
         return fechaDocumento;
     }
 
-    public void setFechaDocumento(Date fechaDocumento) {
+    public void setFechaDocumento(String fechaDocumento) {
         this.fechaDocumento = fechaDocumento;
     }
 
@@ -51,11 +47,11 @@ public class CompraVenta {
         this.descripcion = descripcion;
     }
 
-    public BigDecimal getTotalDocumento() {
+    public Double getTotalDocumento() {
         return totalDocumento;
     }
 
-    public void setTotalDocumento(BigDecimal totalDocumento) {
+    public void setTotalDocumento(Double totalDocumento) {
         this.totalDocumento = totalDocumento;
     }
     

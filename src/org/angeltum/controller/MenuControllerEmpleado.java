@@ -140,7 +140,7 @@ public class MenuControllerEmpleado implements Initializable{
     public CargoEmpleado buscarCodigoCargoEmpleado(int codigoCargoEmpleado) {
         CargoEmpleado resultado = null;
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarCargoEmpleado(?)}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_BuscarCargoEmpleado(?)}");
             procedimiento.setInt(1, codigoCargoEmpleado);
             ResultSet registro = procedimiento.executeQuery();
             while (registro.next()) {
@@ -312,7 +312,7 @@ public class MenuControllerEmpleado implements Initializable{
 
     public void actualizar() {
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ActualizarEmpleado(?, ?, ?, ?, ?, ?, ?)}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EditarEmpleado(?, ?, ?, ?, ?, ?, ?)}");
             Empleados registro = (Empleados) tblEmpleados.getSelectionModel().getSelectedItem();
             registro.setNombresEmpleado(txtNombresEmpleado.getText());
             registro.setApellidosEmpleado(txtApellidosEmpleado.getText());

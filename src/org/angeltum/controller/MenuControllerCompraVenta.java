@@ -114,9 +114,9 @@ public class MenuControllerCompraVenta implements Initializable {
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
                 lista.add(new CompraVenta(resultado.getInt("numeroDocumento"),
-                        resultado.getDate("fechaDocumento"),
+                        resultado.getString("fechaDocumento"),
                         resultado.getString("descripcion"),
-                        resultado.getBigDecimal("totalDocumento")));
+                        resultado.getDouble("totalDocumento")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -142,7 +142,7 @@ public class MenuControllerCompraVenta implements Initializable {
                 btnReportesCompras.setDisable(true);
                 tipoDeOperaciones = operaciones.ACTUALIZAR;
                 break;
-            case AGREGAR:
+            case ACTUALIZAR:
                 guardar();
                 desactivarControles();
                 cargarDatos();
@@ -161,15 +161,15 @@ public class MenuControllerCompraVenta implements Initializable {
     public void guardar() {
         CompraVenta registro = new CompraVenta();
         registro.setNumeroDocumento(Integer.parseInt(txtNumeroDocumento.getText()));
-        registro.setFechaDocumento(Date.valueOf(txtFechaDocumento.getText()));
+        registro.setFechaDocumento((txtFechaDocumento.getText()));
         registro.setDescripcion(txtDescripcion.getText());
-        registro.setTotalDocumento(BigDecimal.valueOf(Double.parseDouble(txtTotalDocumento.getText())));
+        registro.setTotalDocumento((Double.parseDouble(txtTotalDocumento.getText())));
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarCompra(?, ?, ?, ?)}");
             procedimiento.setInt(1, registro.getNumeroDocumento());
-            procedimiento.setDate(2, registro.getFechaDocumento());
+            procedimiento.setString(2, registro.getFechaDocumento());
             procedimiento.setString(3, registro.getDescripcion());
-            procedimiento.setBigDecimal(4, registro.getTotalDocumento());
+            procedimiento.setDouble(4, registro.getTotalDocumento());
             procedimiento.execute();
             listaCompras.add(registro);
         } catch (SQLException e) {
@@ -243,15 +243,15 @@ public class MenuControllerCompraVenta implements Initializable {
 
     public void actualizar() {
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_editarCompras(?, ?, ?, ?)}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EditarCompra(?, ?, ?, ?)}");
             CompraVenta registro = (CompraVenta) tblCompras.getSelectionModel().getSelectedItem();
-            registro.setFechaDocumento(Date.valueOf(txtFechaDocumento.getText()));
+            registro.setFechaDocumento((txtFechaDocumento.getText()));
             registro.setDescripcion(txtDescripcion.getText());
-            registro.setTotalDocumento(BigDecimal.valueOf(Double.parseDouble(txtTotalDocumento.getText())));
+            registro.setTotalDocumento((Double.parseDouble(txtTotalDocumento.getText())));
             procedimiento.setInt(1, registro.getNumeroDocumento());
-            procedimiento.setDate(2, registro.getFechaDocumento());
+            procedimiento.setString(2, registro.getFechaDocumento());
             procedimiento.setString(3, registro.getDescripcion());
-            procedimiento.setBigDecimal(4, registro.getTotalDocumento());
+            procedimiento.setDouble(4, registro.getTotalDocumento());
             procedimiento.execute();
         } catch (SQLException e) {
             e.printStackTrace();

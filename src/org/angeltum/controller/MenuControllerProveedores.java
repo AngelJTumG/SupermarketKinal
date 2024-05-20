@@ -97,7 +97,7 @@ public class MenuControllerProveedores implements Initializable{
     public ObservableList<Proveedores> getProveedores() {
         ArrayList<Proveedores> lista = new ArrayList<>();
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarProveedor()}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarProveedores()}");
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
                 lista.add(new Proveedores(
@@ -183,7 +183,7 @@ public class MenuControllerProveedores implements Initializable{
                             "Eliminar Cliente", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                     if (respuesta == JOptionPane.YES_NO_OPTION) {
                         try {
-                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_eliminarProveedor(?)}");
+                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EliminarProveedor(?)}");
                             procedimiento.setInt(1, ((Proveedores) tblProveedores.getSelectionModel().getSelectedItem()).getCodigoProveedor());
                             procedimiento.execute();
                             listaProveedores.remove(tblProveedores.getSelectionModel().getSelectedItem());
@@ -230,7 +230,7 @@ public class MenuControllerProveedores implements Initializable{
 
     public void actualizar() {
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_editarProveedor(?,?,?,?,?,?,?,?)}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EditarProveedor(?,?,?,?,?,?,?,?)}");
             Proveedores registro = tblProveedores.getSelectionModel().getSelectedItem();
             registro.setNitProveedor(txtNITProveedor.getText());
             registro.setNombresProveedor(txtNombreProveedor.getText());
@@ -277,6 +277,20 @@ public class MenuControllerProveedores implements Initializable{
             listaProveedores.add(registro);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    
+    public void reportes() {
+        switch (tipoDeOperaciones) {
+            case ACTUALIZAR:
+                desactivarControles();
+                limpiarControles();
+                btnEditarProveedor.setText("Editar");
+                btnReportesProveedores.setText("Reporte");
+                btnAgregarProveedor.setDisable(false);
+                btnEliminarProveedor.setDisable(false);
+                tipoDeOperaciones = operaciones.NINGUNO;
+                break;
         }
     }
     

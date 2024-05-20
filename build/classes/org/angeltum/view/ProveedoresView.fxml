@@ -144,7 +144,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Button fx:id="btnEditarProveedor" layoutX="917.0" layoutY="334.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Editar">
+      <Button fx:id="btnEditarProveedor" layoutX="917.0" layoutY="334.0" mnemonicParsing="false" onAction="#editar" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Editar">
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -156,7 +156,7 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button fx:id="btnAgregarProveedor" alignment="CENTER_RIGHT" layoutX="917.0" layoutY="251.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Agregar">
+      <Button fx:id="btnAgregarProveedor" alignment="CENTER_RIGHT" layoutX="917.0" layoutY="251.0" mnemonicParsing="false" onAction="#agregar" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Agregar">
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -168,7 +168,7 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button fx:id="btnEliminarProveedor" alignment="CENTER_RIGHT" layoutX="919.0" layoutY="419.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="100.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Eliminar" textOverrun="LEADING_WORD_ELLIPSIS">
+      <Button fx:id="btnEliminarProveedor" alignment="CENTER_RIGHT" layoutX="919.0" layoutY="419.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="65.0" prefWidth="100.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Eliminar" textOverrun="LEADING_WORD_ELLIPSIS">
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -180,7 +180,7 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button fx:id="btnReportesProveedores" alignment="CENTER_RIGHT" layoutX="915.0" layoutY="501.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="108.0" style="-fx-background-color: BF4F45;" text="Reportes">
+      <Button fx:id="btnReportesProveedores" alignment="CENTER_RIGHT" layoutX="915.0" layoutY="501.0" mnemonicParsing="false" onAction="#reportes" prefHeight="65.0" prefWidth="108.0" style="-fx-background-color: BF4F45;" text="Reportes">
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>

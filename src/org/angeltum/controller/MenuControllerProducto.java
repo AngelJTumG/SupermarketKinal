@@ -152,7 +152,7 @@ public class MenuControllerProducto implements Initializable {
     public TipoProductos buscarTipoProducto(int codigoTipoProducto) {
         TipoProductos resultado = null;
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarTipoProducto(?)}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_BuscarTipoProducto(?)}");
             procedimiento.setInt(1, codigoTipoProducto);
             ResultSet registro = procedimiento.executeQuery();
             while (registro.next()) {
@@ -170,7 +170,7 @@ public class MenuControllerProducto implements Initializable {
     public Proveedores buscarProveedor(int codigoProveedor) {
         Proveedores resultado = null;
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarProveedor(?)}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_BuscarProveedor(?)}");
             procedimiento.setInt(1, codigoProveedor);
             ResultSet registro = procedimiento.executeQuery();
             while (registro.next()) {
@@ -205,7 +205,7 @@ public class MenuControllerProducto implements Initializable {
     public ObservableList<Proveedores> getProveedores() {
         ArrayList<Proveedores> listaPro = new ArrayList<>();
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarProveedor()}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarProveedores()}");
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
                 listaPro.add(new Proveedores(resultado.getInt("codigoProveedor"),
@@ -279,7 +279,7 @@ public class MenuControllerProducto implements Initializable {
         registro.setCodigoTipoProducto(((TipoProductos) cmbCodigoTipoProducto.getSelectionModel().getSelectedItem()).getCodigoTipoProducto());
 
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{Call sp_agregarProductos (?,?,?,?,?,?,?,?)}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{Call sp_AgregarProducto (?,?,?,?,?,?,?,?)}");
             procedimiento.setString(1, registro.getCodigoProducto());
             procedimiento.setString(2, registro.getDescripcionProducto());
             procedimiento.setDouble(3, registro.getPrecioUnitario());
@@ -331,7 +331,7 @@ public class MenuControllerProducto implements Initializable {
 
     public void actualizar() {
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_editarProducto(?,?,?,?,?,?,?,?)}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_EditarProducto(?,?,?,?,?,?,?,?)}");
             Producto registro = (Producto) tblProductos.getSelectionModel().getSelectedItem();
             registro.setCodigoProveedor(((Proveedores) cmbCodigoProveedor.getSelectionModel().getSelectedItem()).getCodigoProveedor());
             registro.setCodigoTipoProducto(((TipoProductos) cmbCodigoTipoProducto.getSelectionModel().getSelectedItem()).getCodigoTipoProducto());

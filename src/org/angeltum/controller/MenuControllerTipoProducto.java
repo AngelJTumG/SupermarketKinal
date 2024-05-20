@@ -86,10 +86,8 @@ public class MenuControllerTipoProducto implements Initializable{
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarTipoProducto()}");
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
-                lista.add(new TipoProductos(
-                        resultado.getInt("codigoTipoProducto"),
-                        resultado.getString("descripcion")
-                ));
+                        lista.add(new TipoProductos(resultado.getInt("codigoTipoProducto"),
+                        resultado.getString("descripcion")));
             }
         } catch (Exception e) {
             e.printStackTrace();
