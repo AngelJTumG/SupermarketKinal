@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javax.swing.JOptionPane;
 import org.angeltum.bean.Clientes;
 import org.angeltum.bean.Empleados;
 import org.angeltum.bean.Factura;
@@ -124,11 +125,23 @@ public class MenuControllerFactura implements Initializable {
         colEmpleado.setCellValueFactory(new PropertyValueFactory<>("codigoEmpleado"));
     }
     
+    public void seleccionarElementos() {
+        Factura compraSeleccionada = (Factura) tblFactura.getSelectionModel().getSelectedItem();
+        if (compraSeleccionada != null) {
+            txtNumeroFactura.setText(String.valueOf(((Factura) tblFactura.getSelectionModel().getSelectedItem()).getNumeroFactura()));
+            txtEstado.setText(((Factura) tblFactura.getSelectionModel().getSelectedItem()).getEstado());
+            txtTotalFactura.setText((String.valueOf(((Factura) tblFactura.getSelectionModel().getSelectedItem()).getTotalFactura())));
+            txtFechaFactura.setText(((Factura)tblFactura.getSelectionModel().getSelectedItem()).getFechaFactura());
+            cmbCodigoCliente.getSelectionModel().select(buscarCliente(((Factura) tblFactura.getSelectionModel().getSelectedItem()).getClienteID()));
+            cmbEmpleado.getSelectionModel().select(buscarEmpleados(((Factura) tblFactura.getSelectionModel().getSelectedItem()).getCodigoEmpleado()));
+        }
+    }
+    
     public ObservableList<Factura> getFacturas() {
         ArrayList<Factura> lista = new ArrayList<>();
         ResultSet resultado = null;
         try {
-            PreparedStatement p = Conexion.getInstance().getConexion().prepareCall("call sp_ListarFactura();");
+            PreparedStatement p = Conexion.getInstance().getConexion().prepareCall("call sp_ListarFacturas();");
             resultado = p.executeQuery();
             while (resultado.next()) {
                 lista.add(new Factura(resultado.getInt("numeroFactura"),
@@ -152,12 +165,12 @@ public class MenuControllerFactura implements Initializable {
             resultado = procedimiento.executeQuery();
             while (resultado.next()) {
                 lista.add(new Clientes(resultado.getInt("clienteID"),
-                        resultado.getString("nombresCliente"),
-                        resultado.getString("apellidosCliente"),
+                        resultado.getString("nombreClientes"),
+                        resultado.getString("apellidosClientes"),
                         resultado.getString("NIT"),
-                        resultado.getString("direccionCliente"),
-                        resultado.getString("telefonoCliente"),
-                        resultado.getString("correoCliente")
+                        resultado.getString("direccionClientes"),
+                        resultado.getString("telefonoClientes"),
+                        resultado.getString("correoClientes")
                 ));
             }
         } catch (Exception e) {
@@ -235,17 +248,17 @@ public class MenuControllerFactura implements Initializable {
     public Clientes buscarCliente(int codigoCliente) {
         Clientes resultado = null;
         try {
-            PreparedStatement p = Conexion.getInstance().getConexion().prepareCall(" call sp_buscarClientes(?);");
+            PreparedStatement p = Conexion.getInstance().getConexion().prepareCall(" call sp_BuscarCliente(?);");
             p.setInt(1, codigoCliente);
             ResultSet registro = p.executeQuery();
             while (registro.next()) {
                 resultado = new Clientes(registro.getInt("ClienteID"),
-                        registro.getString("nombresCliente"),
-                        registro.getString("apellidosCliente"),
+                        registro.getString("nombreClientes"),
+                        registro.getString("apellidosClientes"),
                         registro.getString("NIT"),
-                        registro.getString("direccionCliente"),
-                        registro.getString("telefonoCliente"),
-                        registro.getString("correoCliente")
+                        registro.getString("direccionClientes"),
+                        registro.getString("telefonoClientes"),
+                        registro.getString("correoClientes")
                 );
             }
         } catch (Exception e) {
@@ -257,7 +270,7 @@ public class MenuControllerFactura implements Initializable {
     public Empleados buscarEmpleados(int codigoEmpleado) {
         Empleados resultado = null;
         try {
-            PreparedStatement p = Conexion.getInstance().getConexion().prepareCall("call sp_buscarEmpleados(?);");
+            PreparedStatement p = Conexion.getInstance().getConexion().prepareCall("call sp_BuscarEmpleado(?);");
             p.setInt(1, codigoEmpleado);
             ResultSet registro = p.executeQuery();
             while (registro.next()) {
@@ -275,6 +288,102 @@ public class MenuControllerFactura implements Initializable {
         return resultado;
     }
     
+    public void eliminar() {
+        switch (tipoDeOperaciones) {
+            case ACTUALIZAR:
+                desactivarControles();
+                limpiarControles();
+                btnAgregar.setText("Agregar");
+                btnEliminar.setText("Eliminar");
+                btnEditar.setDisable(false);
+                btnReporte.setDisable(false);
+                tipoDeOperaciones = operaciones.NINGUNO;
+                break;
+            default:
+                if (tblFactura.getSelectionModel().getSelectedItem() != null) {
+                    int respuesta = JOptionPane.showConfirmDialog(null, "Confirmas la eliminación del registro", "Eliminar Factura", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if (respuesta == JOptionPane.YES_NO_OPTION) {
+                        try {
+                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("call sp_EliminarFactura(?);");
+                            procedimiento.setInt(1, ((Factura) tblFactura.getSelectionModel().getSelectedItem()).getNumeroFactura());
+                            procedimiento.execute();
+                            listarFacturas.remove(tblFactura.getSelectionModel().getSelectedItem());
+                            limpiarControles();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe de Seleccionar un Registro para Eliminar");
+                }
+                break;
+        }
+    }
+    
+    public void actualizar() {
+        try {
+            PreparedStatement p = Conexion.getInstance().getConexion().prepareCall("call sp_EditarFactura(?,?,?,?,?,?);");
+            Factura registro = (Factura) tblFactura.getSelectionModel().getSelectedItem();
+            registro.setNumeroFactura(Integer.parseInt(txtNumeroFactura.getText()));
+            registro.setEstado(txtEstado.getText());
+            registro.setTotalFactura(Double.parseDouble(txtTotalFactura.getText()));
+            registro.setFechaFactura(txtFechaFactura.getText());
+            registro.setClienteID(((Clientes) cmbCodigoCliente.getSelectionModel().getSelectedItem()).getClienteID());
+            registro.setCodigoEmpleado(((Empleados) cmbEmpleado.getSelectionModel().getSelectedItem()).getCodigoEmpleado());
+            p.setInt(1, registro.getNumeroFactura());
+            p.setString(2, registro.getEstado());
+            p.setDouble(3, registro.getTotalFactura());
+            p.setString(4, registro.getFechaFactura());
+            p.setInt(5, registro.getClienteID());
+            p.setInt(6, registro.getCodigoEmpleado());
+            p.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editar() {
+        switch (tipoDeOperaciones) {
+            case NINGUNO:
+                if (tblFactura.getSelectionModel().getSelectedItem() != null) {
+                    btnEditar.setText("Actualizar");
+                    btnReporte.setText("Cancelar");
+                    btnAgregar.setDisable(true);
+                    btnEliminar.setDisable(true);
+                    activarControles();
+                    txtNumeroFactura.setEditable(false);
+                    tipoDeOperaciones = operaciones.ACTUALIZAR;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe de Seleccionar una Factura para Actualizar");
+                }
+                break;
+            case ACTUALIZAR:
+                actualizar();
+                btnEditar.setText("Editar");
+                btnReporte.setText("Reporte");
+                btnAgregar.setDisable(false);
+                btnEliminar.setDisable(false);
+                tipoDeOperaciones = operaciones.NINGUNO;
+                desactivarControles();
+                limpiarControles();
+                cargarDatos();
+                break;
+        }
+    }
+
+    public void reportes() {
+        switch (tipoDeOperaciones) {
+            case ACTUALIZAR:
+                desactivarControles();
+                limpiarControles();
+                btnEditar.setText("Editar");
+                btnReporte.setText("Reporte");
+                btnAgregar.setDisable(false);
+                btnEliminar.setDisable(false);
+                tipoDeOperaciones = operaciones.NINGUNO;
+                break;
+        }
+    }
     
     
     public void desactivarControles() {

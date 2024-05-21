@@ -16,6 +16,7 @@ import org.angeltum.controller.AboutMeController;
 import org.angeltum.controller.MenuCargoEmpleadoController;
 import org.angeltum.controller.MenuControllerCompraVenta;
 import org.angeltum.controller.MenuControllerEmpleado;
+import org.angeltum.controller.MenuControllerFactura;
 import org.angeltum.controller.MenuControllerProducto;
 import org.angeltum.controller.MenuControllerProveedores;
 import org.angeltum.controller.MenuControllerTelefonoProveedor;
@@ -191,5 +192,16 @@ public class Main extends Application {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }    
+    }
+
+    public void menuFacturaView() {
+    try {
+            MenuControllerFactura menuFacturaView = (MenuControllerFactura) cambiarEscena
+        ("FacturaView.fxml", 1120, 600);
+            menuFacturaView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
