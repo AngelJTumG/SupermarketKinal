@@ -117,7 +117,7 @@ public class ClienteVistaController implements Initializable {
         txtNombreClientes.setText((((Clientes) tblCliente.getSelectionModel().getSelectedItem()).getNombreClientes()));
         txtApellidosCliente.setText((((Clientes) tblCliente.getSelectionModel().getSelectedItem()).getApellidosClientes()));
         txtDireccionCliente.setText((((Clientes) tblCliente.getSelectionModel().getSelectedItem()).getDireccionClientes()));
-        txtNIT.setText((((Clientes) tblCliente.getSelectionModel().getSelectedItem()).getNITClientes()));
+        txtNIT.setText((((Clientes) tblCliente.getSelectionModel().getSelectedItem()).getNIT()));
         txtTelefonoCli.setText((((Clientes) tblCliente.getSelectionModel().getSelectedItem()).getTelefonoClientes()));
         txtCorreoCliente.setText((((Clientes) tblCliente.getSelectionModel().getSelectedItem()).getCorreoClientes()));
     }
@@ -273,7 +273,7 @@ public class ClienteVistaController implements Initializable {
             procedimiento.setString(2, registro.getNombreClientes());
             procedimiento.setString(3, registro.getApellidosClientes());
             procedimiento.setString(4, registro.getDireccionClientes());
-            procedimiento.setString(5, registro.getNITClientes());
+            procedimiento.setString(5, registro.getNIT());
             procedimiento.setString(6, registro.getTelefonoClientes());
             procedimiento.setString(7, registro.getCorreoClientes());
             procedimiento.execute();
