@@ -21,7 +21,7 @@
             <Image url="@../imagenes/4.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tblTiposProducto" layoutX="200.0" layoutY="130.0" prefHeight="454.0" prefWidth="642.0" styleClass="Button1" stylesheets="@../resource/Diseño.css">
+      <TableView fx:id="tblTiposProducto" layoutX="200.0" layoutY="130.0" onMouseClicked="#seleccionarElemento" prefHeight="454.0" prefWidth="642.0" styleClass="Button1" stylesheets="@../resource/Diseño.css">
          <columns>
             <TableColumn fx:id="colCodigoTipoProducto" prefWidth="280.0" text="codigoTipoProducto" />
             <TableColumn fx:id="colDescripcion" prefWidth="361.0" text="descripcion" />

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteProducto" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="137db6e8-db4f-4e2a-94e7-ff690947e0a4">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="128"/>
+	<queryString>
+		<![CDATA[call sp_ListarProductos();]]>
+	</queryString>
+	<field name="codigoProducto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcionProducto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precioUnitario" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precioDocena" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precioMayor" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="existencia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoTipoProducto" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoProveedor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band height="802" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="555" height="802" uuid="fa96c3bd-e823-470c-8922-fa6a39c545db"/>
+				<imageExpression><![CDATA["C:\\Users\\informatica\\Documents\\SupermarketKinal-main\\src\\org\\angeltum\\imagenes\\Flyer con foto para promoción de servicio técnico azul.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="429" y="15" width="238" height="108" uuid="b3c3089e-70c7-4ef2-b07e-cd8d554c5b91"/>
+				<imageExpression><![CDATA["C:\\Users\\informatica\\Documents\\SupermarketKinal-main\\src\\org\\angeltum\\imagenes\\logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="10" width="356" height="54" uuid="e24c1dff-fe20-4022-9bdb-79f551d7fb19"/>
+				<textElement>
+					<font fontName="Franklin Gothic Demi Cond" size="44" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte Producto]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="119" height="20" uuid="b9107b50-2e00-4b7a-93e8-4fa85fed5672"/>
+				<textElement>
+					<font fontName="Berlin Sans FB Demi" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Producto]]></text>
+			</staticText>
+			<line>
+				<reportElement x="142" y="1" width="1" height="29" uuid="67e269ec-49e3-4873-94e5-ecc8da77a01c"/>
+			</line>
+			<staticText>
+				<reportElement x="160" y="10" width="112" height="20" uuid="bc2beb70-2b3e-4d7e-bfe6-650a649013c2"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Precio Unitario]]></text>
+			</staticText>
+			<line>
+				<reportElement x="272" y="0" width="1" height="29" uuid="cfaad2df-95b4-4554-ab3a-76ebde52f3ef"/>
+			</line>
+			<staticText>
+				<reportElement x="283" y="10" width="119" height="20" uuid="c8c7b3be-03c4-4ef4-926f-e21b640b88a0"/>
+				<textElement>
+					<font fontName="Berlin Sans FB Demi" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Existencia ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="413" y="0" width="1" height="29" uuid="24319111-e6e0-41eb-879d-24a25d09a987"/>
+			</line>
+			<staticText>
+				<reportElement x="429" y="10" width="119" height="20" uuid="98386065-19e9-4f3c-bbb6-e96b3d529250"/>
+				<textElement>
+					<font fontName="Berlin Sans FB Demi" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Precio Mayor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement x="141" y="1" width="1" height="29" uuid="36a6f2c9-d466-48c5-92d0-d93fc7e016dc"/>
+			</line>
+			<line>
+				<reportElement x="10" y="0" width="543" height="1" uuid="27162c8b-ba60-4568-969c-6495e1d979c3"/>
+			</line>
+			<line>
+				<reportElement x="273" y="0" width="1" height="29" uuid="ac72891a-a8c3-48a5-a59f-90aca68f3523"/>
+			</line>
+			<line>
+				<reportElement x="414" y="1" width="1" height="29" uuid="106e3de8-8f3f-4d28-a6f7-122373e0917c"/>
+			</line>
+			<textField>
+				<reportElement x="10" y="9" width="100" height="20" uuid="72cce42b-069d-4f03-8144-5c6808324525"/>
+				<textFieldExpression><![CDATA[$F{codigoProducto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="9" width="100" height="20" uuid="7411850d-f8ef-4e52-b831-311a1831e222"/>
+				<textFieldExpression><![CDATA[$F{precioUnitario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="9" width="100" height="20" uuid="68dfb4b1-f5ac-4abf-bde0-bb60f587d74a"/>
+				<textFieldExpression><![CDATA[$F{existencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="429" y="9" width="100" height="20" uuid="84c35dfc-adfc-4dd4-80c2-12a1122b0b05"/>
+				<textFieldExpression><![CDATA[$F{precioMayor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

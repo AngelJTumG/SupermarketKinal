@@ -22,7 +22,7 @@
             <Image url="@../imagenes/3.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnAgregar" alignment="CENTER_RIGHT" layoutX="956.0" layoutY="243.0" mnemonicParsing="false" onAction="#agregar" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Agregar">
+      <Button fx:id="btnAgregar" alignment="CENTER_RIGHT" layoutX="956.0" layoutY="243.0" mnemonicParsing="false" onAction="#agregar" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" text="Agregar">
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -34,7 +34,7 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button fx:id="btnEditar" layoutX="956.0" layoutY="335.0" mnemonicParsing="false" onAction="#editar" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Editar">
+      <Button fx:id="btnEditar" layoutX="956.0" layoutY="335.0" mnemonicParsing="false" onAction="#editar" prefHeight="66.0" prefWidth="104.0" style="-fx-background-color: BF4F45;" text="Editar">
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -46,7 +46,7 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button fx:id="btnReporte" alignment="CENTER_RIGHT" layoutX="958.0" layoutY="423.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="65.0" prefWidth="100.0" style="-fx-background-color: BF4F45;" styleClass="Button1" text="Eliminar" textOverrun="LEADING_WORD_ELLIPSIS">
+      <Button fx:id="btnReporte" alignment="CENTER_RIGHT" layoutX="958.0" layoutY="423.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="65.0" prefWidth="100.0" style="-fx-background-color: BF4F45;" text="Eliminar" textOverrun="LEADING_WORD_ELLIPSIS">
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>

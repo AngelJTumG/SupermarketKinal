@@ -4,6 +4,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javax.swing.JOptionPane;
 import org.angeltum.bean.Clientes;
 import org.angeltum.db.Conexion;
+import org.angeltum.reportes.GenerarReportes;
 import org.angeltum.system.Main;
 
 /**
@@ -293,6 +296,28 @@ public class ClienteVistaController implements Initializable {
                 btnEliminar.setDisable(false);
                 tipoDeOperaciones = operaciones.NINGUNO;
         }
+    }
+    
+    public void reporte(){
+        switch (tipoDeOperaciones) {
+            case NINGUNO:
+                imprimirReporte();
+                break;
+            case ACTUALIZAR:
+                desactivarControles();
+                limpiarControles();
+                btnEditar.setText("Editar");
+                btnReportes.setText("Reportes");
+                btnAgregar.setDisable(false);
+                btnEliminar.setDisable(false);
+                tipoDeOperaciones = operaciones.NINGUNO;
+        }
+    }
+    
+    public void imprimirReporte(){
+        Map parametros = new HashMap();
+        parametros.put("clienteID", null);
+        GenerarReportes.mostarReportes("ReporteCliente.jasper", "Reporte de Clientes", parametros);
     }
 
     public void desactivarControles() {

@@ -111,7 +111,7 @@ public class MenuControllerEmpleado implements Initializable{
     public ObservableList<CargoEmpleado> getCargoE() {
         ArrayList<CargoEmpleado> lista = new ArrayList<>();
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarCargoEmpleado()}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarCargoDeEmpleado()}");
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
                 lista.add(new CargoEmpleado(resultado.getInt("codigoCargoEmpleado"),

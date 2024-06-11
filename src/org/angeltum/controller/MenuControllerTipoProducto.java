@@ -16,7 +16,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
 import org.angeltum.bean.TipoProductos;
 import org.angeltum.db.Conexion;
@@ -69,7 +68,7 @@ public class MenuControllerTipoProducto implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cargarDatos();
-        listaTiposProducto = FXCollections.observableArrayList();
+        //listaTiposProducto = FXCollections.observableArrayList();
     }
     
     public Main getEscenarioPrincipal() {
@@ -129,12 +128,15 @@ public class MenuControllerTipoProducto implements Initializable{
             PreparedStatement Procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_AgregarTipoProducto(?,?)}");
             Procedimiento.setInt(1, registro.getCodigoTipoProducto());
             Procedimiento.setString(2, registro.getDescripcion());
+            
+            Procedimiento.execute();
             listaTiposProducto.add(registro);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
+            //e.printStackTrace();
         }
     }
-    
+   
     public void agregar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
@@ -257,3 +259,4 @@ public class MenuControllerTipoProducto implements Initializable{
     }
 }
 // org.angeltum.controller.MenuControllerTipoProducto
+//

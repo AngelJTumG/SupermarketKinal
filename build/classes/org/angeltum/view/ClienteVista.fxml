@@ -58,7 +58,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="btnReportes" alignment="CENTER" mnemonicParsing="false" onAction="#cancelar" prefHeight="50.0" prefWidth="135.0" text="Reportes" GridPane.columnIndex="3">
+            <Button fx:id="btnReportes" alignment="CENTER" mnemonicParsing="false" onAction="#reporte" prefHeight="50.0" prefWidth="135.0" text="Reportes" GridPane.columnIndex="3">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>

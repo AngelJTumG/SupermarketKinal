@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,10 +18,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
 import org.angeltum.bean.Proveedores;
 import org.angeltum.db.Conexion;
+import org.angeltum.reportes.GenerarReportesProv;
 import org.angeltum.system.Main;
 
 /**
@@ -35,15 +37,7 @@ public class MenuControllerProveedores implements Initializable{
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
     }
     private operaciones tipoDeOperaciones = operaciones.NINGUNO;
-
-    @FXML
-    private ImageView imgAgregar;
-    @FXML
-    private ImageView imgEliminar;
-    @FXML
-    private ImageView imgEditar;
-    @FXML
-    private ImageView imgReporte;
+        
     @FXML
     private Button btnRegresar;
     @FXML
@@ -122,7 +116,7 @@ public class MenuControllerProveedores implements Initializable{
         colCodigoProveedor.setCellValueFactory(new PropertyValueFactory<>("codigoProveedor"));
         colNITProveedor.setCellValueFactory(new PropertyValueFactory<>("NitProveedor"));
         colNombreProveedor.setCellValueFactory(new PropertyValueFactory<>("nombresProveedor"));
-        colApellidoProveedor.setCellValueFactory(new PropertyValueFactory<>("apellidoProveedor"));
+        colApellidoProveedor.setCellValueFactory(new PropertyValueFactory<>("apellidosProveedor"));
         colDireccionProveedor.setCellValueFactory(new PropertyValueFactory<>("direccionProveedor"));
         colRazonSocial.setCellValueFactory(new PropertyValueFactory<>("razonSocial"));
         colContactoPrincipal.setCellValueFactory(new PropertyValueFactory<>("contactoPrincipal"));
@@ -282,6 +276,9 @@ public class MenuControllerProveedores implements Initializable{
     
     public void reportes() {
         switch (tipoDeOperaciones) {
+            case NINGUNO:
+                imprimirReporte();
+                break;
             case ACTUALIZAR:
                 desactivarControles();
                 limpiarControles();
@@ -292,6 +289,12 @@ public class MenuControllerProveedores implements Initializable{
                 tipoDeOperaciones = operaciones.NINGUNO;
                 break;
         }
+    }
+    
+    public void imprimirReporte(){
+        Map parametros = new HashMap();
+        parametros.put("codigoProveedor", null);
+        GenerarReportesProv.mostarReportesP("ReporteProveedores.jasper", "Reporte de Proveedores", parametros);
     }
     
     public void desactivarControles() {

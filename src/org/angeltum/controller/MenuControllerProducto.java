@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +25,7 @@ import org.angeltum.bean.Producto;
 import org.angeltum.bean.Proveedores;
 import org.angeltum.bean.TipoProductos;
 import org.angeltum.db.Conexion;
+import org.angeltum.reportes.GenerarReportesProd;
 import org.angeltum.system.Main;
 
 /**
@@ -400,6 +403,9 @@ public class MenuControllerProducto implements Initializable {
 
     public void reportes() {
         switch (tipoDeOperador) {
+            case NINGUNO:
+                imprimirReporte();
+                break;
             case ACTUALIZAR:
                 desactivarControles();
                 limpiarControles();
@@ -409,6 +415,12 @@ public class MenuControllerProducto implements Initializable {
                 btnEliminarProducto.setDisable(false);
                 tipoDeOperador = operador.NINGUNO;
         }
+    }
+    
+    public void imprimirReporte(){
+        Map parametros = new HashMap();
+        parametros.put("codigoProducto", null);
+        GenerarReportesProd.mostarReportesP("ReporteProducto.jasper", "Reporte de Producto", parametros);
     }
 
     public void desactivarControles() {

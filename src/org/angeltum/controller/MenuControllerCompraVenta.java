@@ -5,13 +5,10 @@ package org.angeltum.controller;
  * @author Angel
  */
 import javafx.fxml.Initializable;
-import java.math.BigDecimal;
 import java.net.URL;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -24,7 +21,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
 import org.angeltum.bean.CompraVenta;
@@ -35,19 +31,12 @@ public class MenuControllerCompraVenta implements Initializable {
 
     private Main escenarioPrincipal;
     private ObservableList<CompraVenta> listaCompras;
+    private ObservableList<CompraVenta> buscarCompras;
 
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
     }
     private operaciones tipoDeOperaciones = operaciones.NINGUNO;
-        @FXML
-    private ImageView imgAgregar;
-    @FXML
-    private ImageView imgEliminar;
-    @FXML
-    private ImageView imgEditar;
-    @FXML
-    private ImageView imgReporte;
     @FXML
     private Button btnRegresar;
     @FXML
@@ -80,6 +69,7 @@ public class MenuControllerCompraVenta implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cargarDatos();
+        buscarCompras = FXCollections.observableArrayList();
     }
 
     public Main getEscenarioPrincipal() {
@@ -123,6 +113,7 @@ public class MenuControllerCompraVenta implements Initializable {
         }
         return listaCompras = FXCollections.observableArrayList(lista);
     }
+    
     
     
     @FXML

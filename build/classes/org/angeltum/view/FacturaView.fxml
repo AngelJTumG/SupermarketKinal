@@ -84,12 +84,12 @@
       </Button>
       <TableView fx:id="tblFactura" layoutX="147.0" layoutY="213.0" onMouseClicked="#seleccionarElementos" prefHeight="396.0" prefWidth="779.0">
          <columns>
-            <TableColumn fx:id="colNumeroFactura" prefWidth="75.0" style="-fx-background-color: BF4F45;" text="No. Factura" />
-            <TableColumn fx:id="colEstado" prefWidth="110.0" style="-fx-background-color: BF4F45;" text="Estado" />
-            <TableColumn fx:id="colTotalFactura" prefWidth="108.0" style="-fx-background-color: BF4F45;" text="Total Factura" />
-            <TableColumn fx:id="colFechaFactura" prefWidth="150.0" style="-fx-background-color: BF4F45;" text="Fecha de Factura" />
-            <TableColumn fx:id="colCodigoCliente" prefWidth="143.0" style="-fx-background-color: BF4F45;" text="Cod. Cliente" />
-            <TableColumn fx:id="colEmpleado" prefWidth="192.0" style="-fx-background-color: BF4F45;" text="Codigo Empleado" />
+            <TableColumn fx:id="colNumeroFactura" prefWidth="75.0" text="No. Factura" />
+            <TableColumn fx:id="colEstado" prefWidth="110.0" text="Estado" />
+            <TableColumn fx:id="colTotalFactura" prefWidth="108.0" text="Total Factura" />
+            <TableColumn fx:id="colFechaFactura" prefWidth="150.0" text="Fecha de Factura" />
+            <TableColumn fx:id="colCodigoCliente" prefWidth="143.0" text="Cod. Cliente" />
+            <TableColumn fx:id="colEmpleado" prefWidth="192.0" text="Codigo Empleado" />
          </columns>
       </TableView>
       <GridPane layoutX="472.0" layoutY="25.0" prefHeight="166.0" prefWidth="319.0">

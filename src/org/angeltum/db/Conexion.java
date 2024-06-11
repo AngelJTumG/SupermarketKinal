@@ -1,4 +1,4 @@
-
+//0_0
 package org.angeltum.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,6 +16,7 @@ public class Conexion {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             String url = "jdbc:mysql://localhost:3306/DBSupermarket?useSSL=false&allowPublicKeyRetrieval=true";
             conexion = DriverManager.getConnection(url,"root","abc123**");
+            //conexion = DriverManager.getConnection(url,"2019272_IN5BM","abc123**");
         }catch (ClassNotFoundException e){
             e.printStackTrace();
         }catch(InstantiationException e){

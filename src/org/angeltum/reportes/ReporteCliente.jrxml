@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteCliente" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="53d99a65-b3d9-4adc-9d73-f709d8be3f1b">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="452"/>
+	<queryString>
+		<![CDATA[call sp_ListarClientes();]]>
+	</queryString>
+	<field name="clienteID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreClientes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidosClientes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccionClientes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NIT" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefonoClientes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correoClientes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band height="802" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="555" height="802" uuid="03a1d452-9128-4676-b61c-8534893b7991"/>
+				<imageExpression><![CDATA["C:\\Users\\Angel\\OneDrive\\Documentos\\NetBeansProjects\\SupermarketKinal-main\\src\\org\\angeltum\\imagenes\\Flyer con foto para promoción de servicio técnico azul.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="440" y="19" width="115" height="95" uuid="d5c2e81b-696c-4efd-938a-b80d143d5a0f"/>
+				<imageExpression><![CDATA["C:\\Users\\Angel\\OneDrive\\Documentos\\NetBeansProjects\\SupermarketKinal-main\\src\\org\\angeltum\\imagenes\\logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="33" y="23" width="300" height="56" uuid="c9cc1bf4-0233-4d8a-8c08-81d7b54ce91f"/>
+				<textElement>
+					<font fontName="Franklin Gothic Demi Cond" size="44" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte Cliente]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="61" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="107" height="20" uuid="8b3f1d0b-5e56-4a0d-9c50-fdb5c8995eec"/>
+				<textElement>
+					<font fontName="Berlin Sans FB Demi" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nombres Clientes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="128" y="0" width="119" height="20" uuid="86cdd79c-552a-40e6-959f-12b0cd3d54b6"/>
+				<textElement>
+					<font fontName="Berlin Sans FB Demi" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Telefono Clientes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="0" width="100" height="20" uuid="cad06c8d-1ba7-4c45-a9f5-e3bdefb2f444"/>
+				<textElement>
+					<font fontName="Berlin Sans FB Demi" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Nit Clientes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="0" width="100" height="20" uuid="1a753f5b-ee5b-4e04-93f6-c49aaf8b5255"/>
+				<textElement>
+					<font fontName="Berlin Sans FB Demi" size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Correo Clientes]]></text>
+			</staticText>
+			<line>
+				<reportElement x="118" y="0" width="1" height="29" uuid="830a96fc-9d1c-47a6-ad76-656657182589"/>
+			</line>
+			<line>
+				<reportElement x="247" y="0" width="1" height="29" uuid="1ee7e612-9873-4e95-a985-f1a0c03d9ea9"/>
+			</line>
+			<line>
+				<reportElement x="380" y="0" width="1" height="29" uuid="1f95bbc0-f36c-46e5-b0e4-957b547c6fe2"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<textField>
+				<reportElement x="396" y="11" width="159" height="20" uuid="1a2ff207-6c76-4d38-bc53-a759083a633c"/>
+				<textFieldExpression><![CDATA[$F{correoClientes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="11" width="100" height="20" uuid="c1383867-5456-45cb-959c-9d180bb39a2b"/>
+				<textFieldExpression><![CDATA[$F{NIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="128" y="11" width="100" height="20" uuid="7f8b8210-76db-479e-bbae-aed79bc1562e"/>
+				<textFieldExpression><![CDATA[$F{telefonoClientes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="11" width="100" height="20" uuid="24c4df44-fb37-49a0-9515-69e772ab6809"/>
+				<textFieldExpression><![CDATA[$F{nombreClientes}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="507" height="1" uuid="366dadc9-4b10-411e-9986-2c0e5d3feadb"/>
+			</line>
+			<line>
+				<reportElement x="107" y="0" width="100" height="1" uuid="d8072d36-84e1-4109-846d-e77031390788"/>
+			</line>
+			<line>
+				<reportElement x="118" y="0" width="1" height="29" uuid="27017a1a-ca32-4b9c-921a-d09539ecb0e5"/>
+			</line>
+			<line>
+				<reportElement x="248" y="0" width="1" height="29" uuid="53da83b2-d7ad-44d4-91a2-20b842747667"/>
+			</line>
+			<line>
+				<reportElement x="381" y="0" width="1" height="29" uuid="05d5ae08-d872-4408-a440-6cc040f1e8c9"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="87" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
