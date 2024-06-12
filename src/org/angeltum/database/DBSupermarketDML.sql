@@ -14,7 +14,7 @@ CREATE PROCEDURE sp_BuscarCliente(IN id INT)
 BEGIN
     SELECT * FROM Clientes WHERE clienteID = id;
 END $$
-
+call sp_ListarClientes();
 -- Procedimiento almacenado para agregar un nuevo cliente
 
 
@@ -96,25 +96,6 @@ CALL sp_AgregarCliente(
     'carlos.rodriguez@example.com'
 );
 
-CALL sp_AgregarCliente(
-    4,
-    'Ramon',
-    'Perez',
-    'Boulevard de los Sueños 456',
-    '3456789012345',
-    '555-8765',
-    'ramon.perez@example.com'
-);
-
-CALL sp_AgregarCliente(
-    5,
-    'Angie',
-    'S',
-    'Boulevard de los Sueños 456',
-    '3456789012345',
-    '555-8765',
-    'andie.s@example.com'
-);
 -- -----------------------------------------------------------------------------------------Tabla Proveedores
 DELIMITER $$
 
@@ -295,18 +276,13 @@ CREATE PROCEDURE sp_ListarTipoProducto()
 BEGIN
     SELECT * FROM TipoProducto;
 END $$
-delimiter ;
-call sp_ListarTipoProducto();
 
-delimiter $$
 -- Procedimiento almacenado para buscar un tipo de producto por código
 CREATE PROCEDURE sp_BuscarTipoProducto(IN codigo INT)
 BEGIN
     SELECT * FROM TipoProducto WHERE codigoTipoProducto = codigo;
 END $$
-delimiter ; 
 
-delimiter $$
 -- Procedimiento almacenado para agregar un nuevo tipo de producto
 CREATE PROCEDURE sp_AgregarTipoProducto(
     IN codigo INT,
@@ -316,10 +292,7 @@ BEGIN
     INSERT INTO TipoProducto (codigoTipoProducto, descripcion)
     VALUES (codigo, descripcion);
 END $$
-delimiter ;
 
-call sp_AgregarTipoProducto(9,"2");
-delimiter $$
 -- Procedimiento almacenado para editar información de un tipo de producto
 CREATE PROCEDURE sp_EditarTipoProducto(
     IN codigo INT,
@@ -330,8 +303,7 @@ BEGIN
         descripcion = nueva_descripcion
     WHERE codigoTipoProducto = codigo;
 END $$
-delimiter ;
-delimiter $$
+
 -- Procedimiento almacenado para eliminar un tipo de producto por código
 CREATE PROCEDURE sp_EliminarTipoProducto(IN codigo INT)
 BEGIN
@@ -1106,5 +1078,21 @@ begin
 end $$
 delimiter ;
 
-ALTER USER '2019272_IN5BM'@'localhost' identified with mysql_native_password by 'abc123**';
--- alter user 'root'@'localhost' identified with mysql_native_password by 'abc123**';
+alter user 'root'@'localhost' identified with mysql_native_password by 'abc123**';
+flush privileges;
+
+CALL sp_agregarFactura(1, 'Pagada', 1500.00, '2024-06-11', 1, 1);
+CALL sp_agregarFactura(2, 'Pendiente', 1800.00, '2024-06-11', 2, 2);
+CALL sp_agregarFactura(3, 'Pagada', 2000.00, '2024-06-11', 3, 3);
+CALL sp_agregarFactura(4, 'Pendiente', 2300.00, '2024-06-11', 4, 4);
+CALL sp_agregarFactura(5, 'Pagada', 2500.00, '2024-06-11', 5, 5);
+
+CALL sp_agregarDetalleFactura(1, 50.00, 2, 1, 'PROD1');
+CALL sp_agregarDetalleFactura(2, 60.00, 3, 2, 'PROD2');
+
+select * from DetalleFactura;
+select * from DetalleFactura
+    join Factura on DetalleFactura.numeroFactura = Factura.numeroFactura
+    join Clientes on Factura.clienteID = Clientes.clienteID
+    join Productos on DetalleFactura.codigoProducto = Productos.codigoProducto
+    where Factura.numeroFactura = 2

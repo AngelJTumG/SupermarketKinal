@@ -58,7 +58,7 @@
             <DropShadow />
          </effect>
       </Button>
-      <Button fx:id="btnReportesEmpleados" alignment="CENTER_RIGHT" layoutX="954.0" layoutY="511.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="108.0" style="-fx-background-color: BF4F45;" text="Reportes">
+      <Button fx:id="btnReportesEmpleados" alignment="CENTER_RIGHT" layoutX="954.0" layoutY="511.0" mnemonicParsing="false" onAction="#reportes" prefHeight="65.0" prefWidth="108.0" style="-fx-background-color: BF4F45;" text="Reportes">
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>

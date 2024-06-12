@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +24,7 @@ import org.angeltum.bean.Clientes;
 import org.angeltum.bean.Empleados;
 import org.angeltum.bean.Factura;
 import org.angeltum.db.Conexion;
+import org.angeltum.reportes.ReporteFactura;
 import org.angeltum.system.Main;
 
 /**
@@ -373,6 +376,8 @@ public class MenuControllerFactura implements Initializable {
 
     public void reportes() {
         switch (tipoDeOperaciones) {
+            case NINGUNO:
+                imprimirReporte();
             case ACTUALIZAR:
                 desactivarControles();
                 limpiarControles();
@@ -380,11 +385,19 @@ public class MenuControllerFactura implements Initializable {
                 btnReporte.setText("Reporte");
                 btnAgregar.setDisable(false);
                 btnEliminar.setDisable(false);
+                desactivarControles();
+                limpiarControles();
                 tipoDeOperaciones = operaciones.NINGUNO;
                 break;
         }
     }
     
+    public void imprimirReporte(){
+        Map parametros = new HashMap();
+        int facID = ((Factura)tblFactura.getSelectionModel().getSelectedItem()).getNumeroFactura();
+        parametros.put("facID", facID);
+        ReporteFactura.mostarReportesF("ReporteFactura.jasper", "Factura", parametros);
+    }
     
     public void desactivarControles() {
         txtNumeroFactura.setEditable(false);

@@ -16,7 +16,7 @@ create table Clientes(
     correoClientes varchar (128),
     primary key PK_ClienteID(clienteID)
 );
-
+-- select * from Clientes;
 create table Proveedores(
 	codigoProveedor int,
     NitProveedor varchar (10),
@@ -62,7 +62,7 @@ create table TelefonoProveedor
     observaciones varchar(45),
     codigoProveedor int,
     primary key PK_codigoTelefonoProveedor (codigoTelefonoProveedor),
-	foreign key (codigoProveedor) references Proveedores(codigoProveedor)on delete cascade
+	foreign key (codigoProveedor) references Proveedores(codigoProveedor)
 
 );
 
@@ -76,7 +76,7 @@ CREATE TABLE Empleados(
     turno VARCHAR(15),
     codigoCargoEmpleado INT,
     PRIMARY KEY (codigoEmpleado),
-    FOREIGN KEY (codigoCargoEmpleado) REFERENCES CargoDeEmpleado(codigoCargoEmpleado)on delete cascade
+    FOREIGN KEY (codigoCargoEmpleado) REFERENCES CargoDeEmpleado(codigoCargoEmpleado)
 );
 
 create table EmailProveedor
@@ -86,7 +86,7 @@ create table EmailProveedor
     descripcion varchar(100),
     codigoProveedor int not null,
     primary key PK_codigoEmailProveedor (codigoEmailProveedor),
-	foreign key (codigoProveedor) references Proveedores(codigoProveedor)on delete cascade
+	foreign key (codigoProveedor) references Proveedores(codigoProveedor)
 
 );
 
@@ -100,8 +100,8 @@ create table Factura
     clienteID int not null,
     codigoEmpleado int not null,
     primary key PK_numeroFactura (numeroFactura),
-	foreign key (clienteID) references Clientes(clienteID)on delete cascade,
-	FOREIGN KEY (codigoEmpleado) REFERENCES Empleados(codigoEmpleado)on delete cascade
+	foreign key (clienteID) references Clientes(clienteID),
+	FOREIGN KEY (codigoEmpleado) REFERENCES Empleados(codigoEmpleado)
 );
 
 
@@ -116,8 +116,8 @@ create table Productos
     codigoTipoProducto int not null,
     codigoProveedor int not null,
     primary key PK_codigoProducto (codigoProducto),
-	foreign key (codigoTipoProducto) references TipoProducto(codigoTipoProducto)on delete cascade,
-	foreign key (codigoProveedor) references Proveedores(codigoProveedor)on delete cascade 
+	foreign key (codigoTipoProducto) references TipoProducto(codigoTipoProducto),
+	foreign key (codigoProveedor) references Proveedores(codigoProveedor) 
 );
 
 
@@ -129,8 +129,8 @@ create table DetalleFactura
     numeroFactura int not null,
     codigoProducto varchar(15),
     primary key PK_codigoDetalleFactura (codigoDetalleFactura),
-	foreign key (numeroFactura) references Factura(numeroFactura)on delete cascade,
-    foreign key (codigoProducto) references Productos(codigoProducto)on delete cascade
+	foreign key (numeroFactura) references Factura(numeroFactura),
+    foreign key (codigoProducto) references Productos(codigoProducto)
 );
 
 
@@ -142,7 +142,7 @@ create table DetalleCompra
     codigoProducto varchar(15),
     numeroDocumento int not null,
     primary key PK_codigoDetalleCompra (codigoDetalleCompra),
-	foreign key (codigoProducto) references Productos(codigoProducto)on delete cascade,
-    foreign key (numeroDocumento) references Compras(numeroDocumento)on delete cascade
+	foreign key (codigoProducto) references Productos(codigoProducto),
+    foreign key (numeroDocumento) references Compras(numeroDocumento)
 );
 
